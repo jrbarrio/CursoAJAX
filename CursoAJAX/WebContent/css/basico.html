@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		
+		<style type="text/css">
+			/*  
+				selector { 
+					atributo:valor;
+					atributo:valor;
+					atributoFF:valor;
+					atributoIE:valor;
+					atributoCH:valor;
+					atributoSF:valor; 
+				} 
+			*/
+			
+			* {
+				color: blue;
+				font-weight: bold;
+			}
+			
+			p { 
+				color: red;
+				font-size: 24pt;
+			}
+			
+			.importante {
+				color: green;
+				font-size: 50pt;
+			}
+			
+			.muy {
+				font-size: 70pt;
+			}
+			
+			#p1 {
+				color: pink;
+			}
+			
+			/*
+				Prioridad:
+				< elemento < clase < id < style
+			*/
+			
+			/*
+				Otros selectores:
+				- Selector contextual
+					sel1 sel2 sel3 ... {estilo} (descendientes)
+						Ej: table th span { ... }
+					sel1 > sel2 > sel3 ... {estilo} (solo hijos directos)
+				- Elementos que tengan un determinado atributo	
+					table[border='1'] { ... }
+					table[border] { ... }
+					table[class^='imp'] { ... } Elementos en los que el atributo class empiece por imp
+					table[class$='nte'] { ... }  Elementos en los que el atributo class termine por nte
+					table[class*='ortant'] { ... }  Elementos en los que el atributo class contenga ortant
+				- Psedoselectores:
+					selector:contexto
+						:hover
+						:first-letter 
+						:first-line
+						:focus
+						:active
+						:visited		
+						:before
+						:after		
+			*/
+			
+			p:hover {
+				color: yellow;
+			} 
+			
+			p:first-letter {
+				color: black;
+				font-size: 12pt;
+			}
+			
+			p:before {
+				content: '>>'
+			}
+			
+			p:after {
+				content: '<<'
+			}
+			
+		</style>
+	</head>
+	<body>
+		Texto fuera<br>
+		<p id="p1">Bla bla bla...</p>
+		<p class="importante">La la la...</p>
+		<p class="muy importante">Na na na...</p>
+		
+		<p style="color:lime;font-size:6pt">Ta ta ta...</p>
+	</body>
+</html>

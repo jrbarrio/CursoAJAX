@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		<style>
+			.dialogo {
+			  background-color:rgb(217,230,254);
+		  	}
+			table.dialogo {
+			    border-style:outset;
+			    border-width:2px;
+			    background-color:rgb(217,230,254);
+			    border-color:rgb(17,17,187);
+			    text-align:center;
+			    width:500px;
+			}
+			#proteccion {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 100%;
+				visibility: hidden;
+				z-index: 100;
+				background-color: black	;
+				opacity: 0.1;
+				filter:alpha(opacity=10);
+			}
+			#modal {
+				position: absolute;
+				top: 350px;
+				left: 400px;
+				visibility: hidden;
+				z-index: 200;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			function mostrarAviso() {
+				var proteccion = document.getElementById("proteccion");
+				proteccion.style.visibility = "visible";
+				var modal = document.getElementById("modal");
+				modal.style.visibility = "visible";
+				
+				var texto = document.getElementById("texto");
+				var mensaje = document.getElementById("mensaje");
+				mensaje.innerText = texto.value; 
+			}
+			
+			function ocultarAviso() {
+				var proteccion = document.getElementById("proteccion");
+				proteccion.style.visibility = "hidden";
+				var modal = document.getElementById("modal");
+				modal.style.visibility = "hidden";
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" value="Hola" id="texto">
+		<button class='dialogo' onclick="mostrarAviso()"> Mostrar aviso </button>
+		<div id="proteccion"></div>
+		<div id="modal">
+			<table class="dialogo">
+		  	    <tr>
+		  	      <td rowspan='2' style='width:40%'>
+		  	        <img src='../iconos/aviso.png' align='left'/>
+		  	      </td>
+		  	      <td>
+		  	        <b id="mensaje"></b>
+		  	      </td>
+		  	    </tr>
+		  	    <tr>
+		  	      <td style='text-align:center'>
+		  	        <button class='dialogo' onclick="ocultarAviso()"> <img src='../iconos/aceptar_peq.gif'/> Aceptar </button>
+		          </td>
+		  	    </tr>
+			</table> 
+		</div>
+	</body>
+</html>

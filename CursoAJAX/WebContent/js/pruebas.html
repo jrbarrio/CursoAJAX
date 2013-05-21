@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			i = 10;
+			alert(i);
+			i = "Hola";
+			alert(i);
+			i = [1, 2 , 3];
+			alert(i);
+			*/
+			
+			/* 
+				Tipos de datos
+				- Numero i = 3
+				- Cadenas i = "Hola" o i = 'Hola'
+				- Boolean i = true o i = false
+				- Matrices i = [1, true, "hola", [1, 2]];
+				- Objetos  i = new Date();
+					i.xxxx para acceder a una propiedad del objeto
+				- Función ... para más adelante
+				- Valores especiales:
+					- null
+					- undefined				
+			*/
+			
+			/*
+			i = 3 * "5" + false * 7 + null;
+			alert(i);
+			*/
+			
+			/*
+			alert(3 == "3"); // true
+			alert(null == 0); // false
+			alert(false == 0); // true
+			*/
+			
+			/*
+			alert(3 === "3"); // false
+			alert(null === 0); // false
+			alert(false === 0); // false
+			*/
+			
+			/*
+			alert("tipo de 3 = " + typeof 3); // number
+			alert("tipo de 'hola' = " + typeof 'hola'); // string
+			alert("tipo de null = " + typeof null); // object
+			alert("tipo de new Date() = " + typeof new Date()); // object
+			alert("tipo de zzz = " + typeof zzz); // undefined
+			alert("tipo de alert = " + typeof alert); // function
+			*/
+			
+			/*
+			a = "3";
+			b = "5";
+			c = parseInt(a) + parseInt(b);
+			alert(c);
+			alert(parseInt("1.8"));
+			alert(parseInt("xyz"));
+			*/
+			
+			/*
+			alert(typeof parseInt("xyz"));
+			alert(isNaN(parseInt("xyz")));
+			alert(isFinite(parseInt("5")));
+			*/
+			
+			/*
+				Estructuras de control
+				if () {} else {}
+				switch () { case : break;}
+				for (i = 1; i < 10; i++) {}
+				for (x in o) {}
+				while () {}
+				do {} while ()
+			*/
+			
+			/*
+			function suma(a, b) {
+				return a + b;		
+			}
+			alert(suma(1, 2));
+			alert(suma("hola ", "que tal"));
+			alert(suma(3, "5"));
+			alert(suma(3));
+			alert(suma(1, 2, 3, 4, 5, 6));
+			*/
+			
+			a = 3;
+			function test() {
+				var a = 5;
+				var b = 6;
+			}
+			alert("a = " + a);
+			test();
+			alert("a = " + a + " b = " + b);
+		</script>
+	
+	</body>
+</html>

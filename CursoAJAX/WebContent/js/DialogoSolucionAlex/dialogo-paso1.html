@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Titulo</title>
+		
+		<style>
+		.dialogo {
+		  background-color:rgb(217,230,254);
+	  }
+		div.dialogo {
+		    display:none;
+		    border-style:outset;
+		    border-width:2px;
+		    background-color:rgb(217,230,254);
+		    border-color:rgb(17,17,187);
+		    text-align:center;
+		    width:500px;
+		}
+		</style>
+	</head>
+	<body>
+	  <script>
+	    function info(texto) {
+	      var dlg = document.getElementById('aviso');
+	      dlg.style.position='absolute';
+	      dlg.style.top = '100px';
+	      dlg.style.left = '400px';
+	      dlg.style.display = 'block';
+	      document.getElementById('textoDialogo').innerHTML=texto;
+	    }
+	  </script>
+	  
+	  <button onClick='info("Esto es un aviso <b>muy</b> importante")'>
+	  Mostrar
+	  </button>	  
+  	<div id='aviso' class='dialogo'>
+  	  <table>
+  	    <tr>
+  	      <td rowspan='2' style='width:40%'>
+  	        <img src='aviso.png' align='left'/>
+  	      </td>
+  	      <td id='textoDialogo'>
+  	        
+  	      </td>
+  	    </tr>
+  	    <tr>
+  	      <td style='text-align:center'>
+  	        <button class='dialogo'> <img src='aceptar.gif'/> Aceptar </button>
+          </td>
+  	    </tr>
+  	  </table>
+  	  
+  	</div>
+	</body>
+</html>

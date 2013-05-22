@@ -1,0 +1,15 @@
+aceitunas.png
+aceitunas_negras.png
+bacon.png
+cebolla.png
+champinon.png
+pepperoni.png
+pescado.png
+pimiento_verde.png
+pollo.png
+queso.png
+queso_feta.png
+salami.png
+salchicha.png
+ternera.png
+tomate.png

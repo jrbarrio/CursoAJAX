@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		
+		<style type="text/css">
+			* {
+				padding: 0px;
+				margin: 0px;
+			}
+			div {
+				border: 1px solid black;
+				height: 35px;
+			}
+		</style>
+		<script type="text/javascript">
+		var opciones = ["aceitunas", "aceitunas_negras", "bacon", "cebolla", "champinon", "pepperoni"];
+		var selecciones = [];
+		
+		/*
+		<img src="pizza/pescado.png">
+		<img src="pizza/pimiento_verde.png">
+		<img src="pizza/pollo.png">
+		<img src="pizza/queso.png">
+		<img src="pizza/queso_feta.png">
+		<img src="pizza/salami.png">
+		<img src="pizza/salchicha.png">
+		<img src="pizza/ternera.png">
+		<img src="pizza/tomate.png">	
+		*/
+		
+		window.onload = function() {
+			var capa1 = document.getElementById("capa1");
+			var innerHTML1 = "";
+			for (var i in opciones) {
+				innerHTML1 += "<img src='pizza/" + opciones[i] + ".png' onclick=cambiar('" + opciones[i] + "')>"
+			}
+			capa1.innerHTML = innerHTML1;
+		}
+		
+		function cambiar(nombre) {
+			if (estaEn(nombre, opciones)) {
+				borrar(nombre, opciones);
+				selecciones.push(nombre);
+			} else {
+				borrar(nombre, selecciones);
+				opciones.push(nombre);
+			}
+			
+			var capa1 = document.getElementById("capa1");
+			var innerHTML1 = "";
+			for (var i in opciones) {
+				innerHTML1 += "<img src='pizza/" + opciones[i] + ".png' onclick=cambiar('" + opciones[i] + "')>"
+			}
+			capa1.innerHTML = innerHTML1;
+			
+			var capa2 = document.getElementById("capa2");
+			var innerHTML2 = "";
+			for (var i in selecciones) {
+				innerHTML2 += "<img src='pizza/" + selecciones[i] + ".png' onclick=cambiar('" + selecciones[i] + "')>"
+			}
+			capa2.innerHTML = innerHTML2;
+		}
+		
+		function estaEn(nombre, array) {
+			for(var i = 0; i < array.length; i++) {
+				if (array[i] == nombre) {
+					return true;
+				}
+			}
+			return false;
+		}
+		
+		function borrar(nombre, array) {
+			for(var i = 0; i < array.length; i++) {
+				if (array[i] == nombre) {
+					break;
+				}
+			}
+			array = array.splice(i,1)
+		}
+		</script>
+	</head>
+	<body>
+		<div id="capa1"></div>
+		<div id="capa2"></div>	
+	</body>
+</html>

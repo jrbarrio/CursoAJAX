@@ -13,6 +13,7 @@
 				position: absolute;	
 				width: 40px;
 				height: 40px;
+				top: 100px;
 				background: url("../imagenes/birdr.png") no-repeat;
 			}
 		</style>
@@ -58,10 +59,25 @@
 				x += velocidad;
 				pajaro.style.left = x + "px";
 			}			
+			
+			function izquierda() {
+				if (velocidad > 0) {
+					velocidad = -velocidad;
+					imagen = imagenIzquierda;
+				}
+			}
+			
+			function derecha() {
+				if (velocidad < 0) {
+					velocidad = -velocidad;
+					imagen = imagenDerecha;
+				}
+			}
 		</script>
 	</head>
 	<body>
+		<input type=image src="../iconos/flechai.png" onclick="izquierda()">
+		<input type=image src="../iconos/flechad.png" onclick="derecha()">
 		<div id="pajaro"></div>
-	
 	</body>
 </html>

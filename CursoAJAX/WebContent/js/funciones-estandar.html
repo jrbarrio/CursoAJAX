@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var s = "Hola";
+			console.info("Longitud = " + s.length);
+			console.info("s = Hola" + (s=='Hola'));
+			console.info("Mayúsculas : " + s.toUpperCase());
+			console.info("Minúsculas : " + s.toLowerCase());
+			console.info("Primer carácter : " + s.charAt());
+			console.info("Buscar o : " + s.indexOf("o"));
+			console.info("Última ocurrencia de o : " + s.lastIndexOf("o"));
+			console.info("Subcadena : " + s.substring(1, 2));
+			var fecha = "22/05/2013";
+			var trozos = fecha.split("/")
+			console.info("Trozos : " + trozos);
+			
+			var f1 = new Date();
+			var f2 = new Date(2013, 0, 11);
+			var f3 = new Date(2013,0,25,14,00,59)
+			var f4 = new Date(0);
+			
+			console.info("f1 = " + f1);
+			console.info("f2 = " + f2);
+			console.info("f3 = " + f3);
+			console.info("f4 = " + f4);
+			
+			console.info("Año = " + f1.getFullYear())
+			console.info("Mes = " + f1.getMonth())
+			console.info("Día de la semana = " + f1.getDay())
+			
+			console.dir(f1);
+			console.info("Fecha RFC " + f1.toGMTString());
+			console.info("Fecha local " + f1.toLocaleString());
+		</script>
+	
+	</body>
+</html>

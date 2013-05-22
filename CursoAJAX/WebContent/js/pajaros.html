@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		
+		<style type="text/css">
+			body {
+				background: url("../imagenes/escenario.jpg") no-repeat;
+			}
+			
+			#pajaro {
+				position: absolute;	
+				width: 40px;
+				height: 40px;
+				background: url("../imagenes/birdr.png") no-repeat;
+			}
+		</style>
+		<script type="text/javascript">
+			pajaro = null;
+			
+			window.onload = function() {
+				pajaro = document.getElementById("pajaro");				
+				obtenerImagen();
+				moverPajaro();				
+				setTimeout(arguments.callee, 100);
+			}			
+			
+			imagenDerecha = "url(../imagenes/birdr.png)";
+			imagenIzquierda = "url(../imagenes/birdl.png)";
+			imagen = imagenDerecha;
+			
+			desplazamiento = 40;
+			xImagen = 40;
+			
+			function obtenerImagen() {
+				if (xImagen >= 520) {
+					xImagen = 40;
+				}
+				xImagen += desplazamiento;
+				pajaro.style.background = imagen + " -" + xImagen + "px -0px no-repeat"
+			}	
+			
+			velocidad = 10;
+			x = 0;
+			
+			function moverPajaro() {	
+				if (x > 500) {
+					velocidad = -velocidad;
+					imagen = imagenIzquierda;
+				}
+				if (x < 0) {
+					velocidad = -velocidad;
+					imagen = imagenDerecha;
+				}
+				
+				xImagen += desplazamiento;
+				x += velocidad;
+				pajaro.style.left = x + "px";
+			}			
+		</script>
+	</head>
+	<body>
+		<div id="pajaro"></div>
+	
+	</body>
+</html>

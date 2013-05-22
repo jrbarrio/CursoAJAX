@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		<style type="text/css">
+			#bicho {
+				position: absolute;
+				top: 50px;
+				left: 50px;
+			}
+		</style>
+		<script type="text/javascript">
+			vx = 5;
+			x = 50;
+			y = 50;
+			
+			function animar() {
+				var el = document.getElementById("bicho");
+				x += vx;
+				if ((x > 300) || (x < 5)) vx = -vx;
+				el.style.top = y + "px";
+				el.style.left = x + "px";
+				setTimeout(arguments.callee, 30);
+			}
+			
+			opacidad = 100;
+			function efecto() {
+				var el = document.getElementById("foto");
+				el.style.opacity = opacidad/100;
+				el.style.opacity = "alpha(opacity = " + opacidad + ")";
+				opacidad -= 5;
+				if (opacidad >= 0) {
+					setTimeout(arguments.callee, 30)
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<img src="../iconos/bicho.png" id="bicho" />
+		<button onclick="animar()">Animar</button>
+		<br/><br/><br/><br/><br/><br/>
+		<img src="../fotos/exterior00.jpg" id="foto" />
+		<button onclick="efecto()">Efecto</button>
+		
+	</body>
+</html>

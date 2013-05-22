@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var edades = new Array();
+			console.info(typeof edades) // Object
+			
+			edades["Pepe"] = 33;
+			edades["Antonio"] = 27;
+			edades["Marta"] = "No lo dice";
+			console.info("Edad de Marta : " + edades["Marta"]);
+			
+			// En este tipo de matrices no hay propiedad length
+			// Tampoco existen las funciones vistas en los Arrays
+			
+			for (var nombre in edades) {
+				console.info("Edad de " + nombre + " = " + edades[nombre]);
+			}
+			
+			console.info("Edad de Marta = " + edades.Marta);
+			// var el = document["getElementById"]("Pepe");
+			
+			for (var nombre in document) {
+				console.info("document." + nombre + " = " + document[nombre]);
+			}
+			
+			/*
+				Literales de objetos
+				objeto {
+					clave: valor,
+					clave: valor,
+					clave, valor,
+					...
+				}
+			*/
+			
+			var cliente = {
+				nombre: "Antonio",
+				edad: 23,
+				fechaNacimiento: new Date(1970,1,28),
+				direccion: [
+					{
+						tipoVia: "CL", 
+						via: "Francisco Silvela",
+						numVia: 64
+					},
+					{
+						tipoVia: "CL", 
+						via: "Francisco Silvela",
+						numVia: 64
+					},
+					{
+						tipoVia: "CL", 
+						via: "Francisco Silvela",
+						numVia: 64
+					} 
+				]
+			}
+			console.info("Nombre = " + cliente.nombre);
+			console.info("Edad = " + cliente.edad);
+			console.info("Fecha de nacimiento = " + cliente.fechaNacimiento);
+			
+			//JSON = Javascript Object Notation
+			console.info(cliente.direccion[0].via);
+			console.info(cliente["direccion"][0]["via"]);
+			console.info(cliente.nombre);
+			console.info(cliente["edad"]);
+			
+		</script>
+	
+	</body>
+</html>

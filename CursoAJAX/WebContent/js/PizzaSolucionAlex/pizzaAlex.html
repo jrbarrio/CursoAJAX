@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Curso AJAX de Planetalia</title>
+
+<style>
+.etiqueta {
+	font-weight: bold;
+	color: blue;
+}
+
+.grupo {
+	font-weight: bold;
+	color: red;
+}
+
+.listado {
+	border:solid 1px black;
+	width: 400px;
+	height: 70px;
+	padding: 5px 0px 0px 5px;
+	overflow: auto;
+}
+
+.tabla {
+	width: 100%;
+}
+
+.titulo {
+	font-family: Cursive;
+	text-align: center;
+	color: blue;
+	border-style: solid;
+	border-width: 3px;
+	background-color: #EEEEEE;
+	border-color: black #808080 #808080 black;
+	margin-left: 25%;
+	width: 50%;
+}
+</style>
+</head>
+<body>
+
+	<h1 class='titulo'>Pizzalia</h1>
+	<fieldset>
+		<legend class='grupo'>Crea tu propia Pizza</legend>
+		<table>
+			<tr>
+				<td class='etiqueta'>Ingredientes Seleccionados:</td>
+				<td>
+					<div class='listado' id='seleccionados'></div>
+				</td>
+			</tr>
+			<tr>
+				<td class='etiqueta'>Ingredientes Disponibles :</td>
+				<td>
+					<div class='listado' id='disponibles'></div>
+				</td>
+			</tr>
+		</table>
+
+	</fieldset>
+
+	<script language="JavaScript1.2" type="text/javascript">
+		var RUTA_IMAGENES = "../../pizza/";
+		var ingredientesSeleccionados = new Array(0);
+		var ingredientesDisponibles = [ 
+		 "aceitunas.png",
+		 "aceitunas_negras.png",
+		 "bacon.png",
+		 "cebolla.png",
+		 "champinon.png",
+		 "pepperoni.png",
+		 "pescado.png",
+		 "pimiento_verde.png",
+		 "pollo.png",
+		 "queso.png",
+		 "queso_feta.png",
+		 "salami.png",
+		 "salchicha.png",
+		 "ternera.png",
+		 "tomate.png"
+ ];
+
+		function mostrarSeleccionados() {
+			var html = "<table><tr>";
+			for ( var i in ingredientesSeleccionados) {
+				html += "<td><img src='" + RUTA_IMAGENES 
+						+ ingredientesSeleccionados[i]
+						+ "' onclick='mover(ingredientesSeleccionados,ingredientesDisponibles,"
+						+ i + ")'></td>";
+			}
+			html += "</tr></table>";
+			document.getElementById("seleccionados").innerHTML = html;
+		}
+
+		function mostrarDisponibles() {
+			var html = "<table><tr>";
+			for ( var i in ingredientesDisponibles) {
+				html += "<td><img src='" + RUTA_IMAGENES
+						+ ingredientesDisponibles[i]
+						+ "' onclick='mover(ingredientesDisponibles,ingredientesSeleccionados,"
+						+ i + ")'></td>";
+			}
+			html += "</tr></table>";
+			document.getElementById("disponibles").innerHTML = html;
+		}
+
+		function mostrarTodo() {
+			mostrarSeleccionados();
+			mostrarDisponibles();
+		}
+
+		function mover(matrizOrigen, matrizDestino, i) {
+			var elementoBorrado = matrizOrigen.splice(i, 1);
+			matrizDestino.push(elementoBorrado);
+			mostrarTodo();
+		}
+
+		mostrarTodo();
+	</script>
+</body>
+</html>

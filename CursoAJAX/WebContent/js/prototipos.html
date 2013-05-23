@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			// Cadena de prototipos
+			var p = {
+				x: 10,
+				saludar: function() {
+					return "Hola";
+				}		
+			}
+			
+			var c = {
+				x: 3,
+				y: 5
+			} 
+			
+			c.__proto__ = p;
+			alert(c.x);
+			alert(c.saludar());
+			*/
+			
+			function Circulo(x, y) {
+				this.x = x;
+				this.y = y;
+				this.r = 15;
+			}
+			
+			Circulo.prototype = {
+				toString: function() {
+					return "x=" + this.x + " y=" + this.y +	" area=" + this.area();
+				},
+				area: function() {
+					return Math.PI * this.r * this.r;
+				}
+			}
+			
+			var c1 = new Circulo(10, 20);
+			alert(c1.toString());
+			
+		</script>
+	</body>
+</html>

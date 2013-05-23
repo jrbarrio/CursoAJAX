@@ -45,6 +45,7 @@
 		alert("Circulo = " + circulo.toString());	
 		*/
 		
+		/*
 		function Circulo(x, y) {
 			this.x = x;
 			this.y = y;
@@ -62,6 +63,53 @@
 		var c2 = new Circulo(5, 7);
 		alert(c1.toString());
 		alert(c2.toString());
+		*/
+		
+		/*
+		function test1(a) {
+			var local = 10;
+			var z = function(b) {
+				return local + p;
+			};
+			local = 20;
+			var p = 10;
+			return z;
+		}
+		
+		var x = test1(5);
+		console.info("x(15) = " + x(15));
+		*/
+		
+		/*
+		function test2() {
+			var a = 10;
+			return [
+				function() { a++; },
+				function() { return a; }
+			];
+		}
+		var z = test2();
+		z[0]()
+		console.info("a = " + z[1]());
+		test2()[0]()
+		console.info("a = " + test2()[1]());
+		*/
+		
+		function rellenarMatriz() {
+			var a = new Array(10);
+			for (var i = 0; i < 10; i++) {
+				a[i] = function(x) {
+					return function() {
+						alert("El cuadrado de " + x + " es " + x*x);
+					}
+				}(i); 
+			}
+			return a;
+		}
+		
+		var z = rellenarMatriz();
+		z[1]();
+		z[9]();
 		
 		</script>
 	</body>

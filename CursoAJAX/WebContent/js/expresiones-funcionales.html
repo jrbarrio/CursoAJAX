@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+		/*
+		function recorrerMatriz(matriz, f) {
+			for (var i in matriz) {
+				var elemento = matriz[i];
+				f(elemento);
+			}
+		}
+		
+		function imprimirElemento(e) {
+			console.info(e);
+		}		
+		recorrerMatriz([1, 2, 3, 4, 5], imprimirElemento);
+		
+		recorrerMatriz([1, 2, 3, 4, 5], 
+				function(e) {
+					console.info(e);
+				}
+		);
+		*/
+		
+		/*
+		var circulo = {
+				x: 10,
+				y: 20,
+				r: 15,
+				color: "red",
+				toString: function() {
+					return "x=" + this.x +
+						" y=" + this.y +
+						" area=" + this.area();
+				},
+				area: function() {
+					return Math.PI * this.r * this.r;
+				}
+		}
+		alert("Circulo = " + circulo.toString());	
+		*/
+		
+		function Circulo(x, y) {
+			this.x = x;
+			this.y = y;
+			this.r = 15;
+			
+			this.toString = function() {
+				return "x=" + this.x + " y=" + this.y +	" area=" + this.area();
+			};
+			
+			this.area = function() {
+				return Math.PI * this.r * this.r;
+			};
+		}
+		var c1 = new Circulo(10, 20);
+		var c2 = new Circulo(5, 7);
+		alert(c1.toString());
+		alert(c2.toString());
+		
+		</script>
+	</body>
+</html>

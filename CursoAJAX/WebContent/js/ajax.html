@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			function datosRecibidos(req) {
+				if (req.readyState != 4) return;
+				var capa = document.getElementById("resultado");
+				eval("var hoteles=" + req.responseText);
+				var str = "<ul>";
+				for (var i in hoteles) {
+					str += "<li>" + hoteles[i] + "</li>";
+				}
+				str += "</ul>";
+				capa.innerHTML = str;
+			}
+		
+			function buscar() {
+				var pmin = document.getElementById("pmin").value;
+				var pmax = document.getElementById("pmax").value;
+				
+				console.info("pmin = " + pmin);
+				console.info("pmax = " + pmax);
+				
+				var req = new XMLHttpRequest();
+				req.onreadystatechange = function() {
+					datosRecibidos(req);
+				};
+				req.open("GET", "../listadoHoteles?pmin=" + pmin + "&pmax=" + pmax, true /*, login, password */);
+				/*
+				req.setRequestHeader("User-Agent",...);
+				req.setRequestHeader("SOAPAction",...);
+				*/
+				req.send(null); // null para GET
+				/*
+				req.readyState =
+					0 - no inicializado
+					1 - loading (antes de llamar a send()
+					2 - loaded (se ha lanzado el send y tenemos disponibles encabezados de la respuesta)
+						req.status - 200, 403, 404, 500
+						req.getResponseHeader("Content-Type")
+					3 - interactivo (parte de los datos están disponibles)
+						req.responseText - respuesta parcial
+					4 - complete
+						req.responseText - respuesta completa
+						req.responseXML - Arbol XML  del resultado (DOM)
+				*/
+			}
+		</script>
+	</head>
+	<body>
+		Precio mínimo
+		<input type="text" placeholder="(Precio mínimo)" id="pmin" /><br/>
+		Precio máximo
+		<input type="text" placeholder="(Precio máximo" id="pmax" /><br/>
+		<button onclick="buscar()">Buscar</button>
+		<div id="resultado"></div>
+	</body>
+</html>

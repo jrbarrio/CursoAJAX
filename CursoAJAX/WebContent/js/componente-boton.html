@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Curso AJAX de Planetalia - Paso 3  : Prototipos</title>
+	</head>
+	<body>
+	  <p id='parrafo1'>
+	  Párrafo 1
+	  </p>
+	  <p id='parrafo2'>
+	  Párrafo 2
+	  </p>
+		<script>
+		    function Button(idPadre, idBoton) {
+		      var padre = document.getElementById(idPadre)
+		      var boton = document.createElement("button");
+		      boton.id = idBoton;
+		      padre.appendChild(boton);		      
+		      
+		      boton = document.getElementById(idBoton);
+		      boton.innerHTML+= "<img id='"+idBoton+"_img'/><div id='"+idBoton+"_lbl'>Etiqueta</div>";
+	      
+		      this.etiqueta = document.getElementById(idBoton+"_lbl");
+		      this.imagen = document.getElementById(idBoton+"_img");
+		      this.listaFunciones = new Array(0);
+		      
+		      var btn = this;
+		      boton.onclick = function() {
+				for ( var i in btn.listaFunciones) 
+  		          btn.listaFunciones[i]();
+		      }
+		    }
+		    
+		    Button.prototype = {
+		      getImage : function() { return this.imagen.src; },
+		      setImage : function(imagen) { this.imagen.src = imagen; },
+		      getLabel : function() { return this.etiqueta.innerHTML; },
+		      setLabel : function(texto) { this.etiqueta.innerHTML = texto; },
+		      getColor : function() { return this.etiqueta.style.color; },
+		      setColor : function(color) { this.etiqueta.style.color = color;  },
+		      addClickListener : function(fn) { this.listaFunciones.push(fn); }
+		    };
+		    
+		    function test1() {
+		      alert("Función 1");
+		    }
+		    
+		    function test2() {
+		      alert("Función 2");
+		    }
+		    
+		    function test3(a) {
+		      alert("Función " + a);
+		    }
+
+		    
+		    var btn1 = new Button("parrafo2","boton1");
+		    btn1.setLabel("Hola");
+		    btn1.setColor("blue");
+		    btn1.setImage("../iconos/bicho0.gif");
+		    btn1.addClickListener( test1 );
+		    
+		    var a = 10;
+		    btn1.addClickListener(function() {
+		    	test3(a);
+		    });
+		    
+ 		    var btn2 = new Button("parrafo2","boton2");
+		    btn2.setLabel("Adios");
+		    btn2.setColor("red");
+		    btn2.setImage("../iconos/bicho0.gif");
+		    
+		    btn2.addClickListener( test1 );
+		    btn1.setColor("green");
+		    
+		    /*
+		    eval(s)
+		    
+		    eval("var x = 3");
+		    eval("var x = [1,2,3,4]")
+		    eval("2+3*Math.PI")
+		    eval(...codigo javascript...)
+		    */
+		    
+		    
+  	</script>
+	</body>
+</html>

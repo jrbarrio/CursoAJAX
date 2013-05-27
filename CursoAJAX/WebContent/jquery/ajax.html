@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		
+		<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+		
+		<script type="text/javascript">
+			function datosRecibidos(datos) {
+				eval("var hoteles=" + datos);
+				var str = "<ul>";
+				for (var i in hoteles) {
+					str += "<li>" + hoteles[i] + "</li>";
+				}
+				str += "</ul>";
+				$("#resultado").html(str);
+			}
+			
+			function peticionErronea(req, estado, msgError) {
+				console.error(msgError);	
+			}
+			
+			function peticionFinalizada() {
+				console.info("Petición finalizada");	
+			}
+		
+			function buscar() {
+				var pmin = $("#pmin").val();
+				var pmax = $("#pmax").val();
+				$.ajax(
+					{
+						async: true,
+						cache: false, // JQuery inserta un valor ficticio para evitar que se utilice la cache
+						url: "../listadoHoteles",
+						timeout: 5000,
+						type: "GET",
+						// username: "",
+						// password: "",
+						dataType: "text",
+						data: {
+							pmin: pmin,
+							pmax: pmax
+						},
+						success: datosRecibidos,
+						error: peticionErronea,
+						complete: peticionFinalizada
+					}	
+				);
+			}
+		</script>
+	</head>
+	<body>
+		Precio mínimo
+		<input type="text" placeholder="(Precio mínimo)" id="pmin" /><br/>
+		Precio máximo
+		<input type="text" placeholder="(Precio máximo" id="pmax" /><br/>
+		<button onclick="buscar()">Buscar</button>
+		<div id="resultado"></div>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		
+		<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+		
+		<script type="text/javascript">
+			function init() {
+				// $(selector).evento(funcion)
+				// $(selector).click()
+				$("#boton").click(function() { alert("Me has pulsado"); });
+				$("p").click(
+					function(evento) {
+						// this - nodo HTML sobre el que ocurre el evento
+						alert("Has pulsado el parrafo " + this.id);
+						//this.innerHTML += " Pulsado";
+						$(this).append(" Pulsado");
+						console.dir(evento);
+						/*
+							Eventos:
+							- Raton
+								click dblclick
+								mousedown mouseup mousemove
+								mouseover mouseout
+							- Teclado
+								keydown keyup keypress
+							- Campos
+								focus blur
+								change select
+							- Elementos
+								scroll resize
+						*/
+					}		
+				);
+				$("p").mouseover(function() { 
+					$(this).css("background-color", "red");
+				});
+				$("p").mouseout(function() { 
+					$(this).css("background-color", "white");
+				});	
+			}
+			$(init);					
+		</script>
+	</head>
+	<body>
+		<p id="p1">Párrafo 1</p>
+		<p id="p2">Párrafo 2</p>
+		<p id="p3">Párrafo 3</p>
+		<button id="boton">Botón</button>
+	</body>
+</html>

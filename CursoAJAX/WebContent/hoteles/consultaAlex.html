@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		
+		<style type="text/css">
+			img {
+				position: absolute;
+				z-index: 100;
+			}
+			
+			#resultado {
+				position: absolute;
+				width: 800px;
+				height: 600px;
+				background-image: url(../imagenes/spain_provincias.jpg);
+			}
+			
+			#formulario {
+				position: absolute;
+				top: 620px;
+			}
+		</style>
+		
+		<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+		
+		<script type="text/javascript">
+			function hotelesRecibidos(datos) {
+				eval("var hoteles=" + datos);
+				for (var i in hoteles) {
+					var str = "<img src='../iconos/bicho0.gif' id='"  + hoteles[i].id + "' />";
+					$("#resultado").append(str);
+					$("#" + hoteles[i].id).css(
+						{
+							top: hoteles[i].planoY,
+							left: hoteles[i].planoX
+						}	
+					);
+				}
+			}
+			
+			function peticionErronea(req, estado, msgError) {
+				console.error(msgError);	
+			}
+			
+			function peticionFinalizada() {
+				console.info("Petición finalizada");	
+			}
+		
+			function buscar() {
+				var pmin = $("#pmin").val();
+				var pmax = $("#pmax").val();
+				$.ajax(
+					{
+						async: true,
+						cache: false, // JQuery inserta un valor ficticio para evitar que se utilice la cache
+						url: "../busquedaHoteles",
+						timeout: 5000,
+						type: "GET",
+						dataType: "text",
+						data: {
+							pmin: pmin,
+							pmax: pmax
+						},
+						success: hotelesRecibidos
+					}	
+				);
+			}
+			
+			function init() {
+				$("#boton").click(buscar);
+			}
+			
+			$(init);
+		</script>
+	</head>
+	<body>
+		<div id="resultado"> </div><br />
+		<div id="formulario">
+			<label for="pmin">Precio mínimo</label><input type="text" id="pmin" /><br />
+			<label for="pmax">Precio máximo</label><input type="text" id="pmax" /><br />
+			<button id="boton">Buscar</button>
+		</div>
+	</body>
+</html>

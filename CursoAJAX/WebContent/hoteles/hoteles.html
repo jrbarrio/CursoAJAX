@@ -1,0 +1,62 @@
+<!DOCTYPE html >
+<html>
+<head>
+	<style>
+		#contenedor {position:relative;top:0px;left:0px}
+		#mapa {position:absolute;top:0px;left:0px}
+	</style>
+	<script src="jquery-1.6.2.min.js"></script>
+	<script>
+		function datosRecibidos(datos) {
+			eval("var hoteles="+datos);
+			var str="";
+			for (var i in hoteles) {
+				var x = hoteles[i].planoX;
+				var y = hoteles[i].planoY;
+				var estilo = "position:absolute;top:"+y+"px;left:"+x+"px";
+				var id = "h_"+hoteles[i].id;
+				str += "<img src='../iconos/hotel.gif' "+
+								" id='" + id+"' "+
+								" style='"+estilo+"' />";
+			}
+			$("#resultado").html(str);
+		} 
+		function buscar() {
+			var pmin = $("#pmin").val();
+			var pmax = $("#pmax").val();
+			$.ajax(
+					{
+						cache:false,
+						url:"../busquedaHoteles",
+						timeout:5000,	/* en ms */
+						dataType:"text", /* xml, json */
+						data:{
+							pmin:pmin,
+							pmax:pmax
+						},
+						success:datosRecibidos,
+					}
+			);
+		}
+		
+		function init() {
+			$("#buscar").click(buscar);
+		}
+		$(init);
+	</script>
+</head>
+<body>
+	Precio Mínimo: 
+		<input type="text" placeholder="(Precio mínimo)"
+			 id="pmin" /><br/>
+	Precio Máximo: 
+		<input type="text" placeholder="(Precio máximo)"
+			 id="pmax" /><br/>
+	<button id='buscar'><img src='../iconos/lupa.gif' />Buscar</button>
+	<div id="contenedor">
+		<img id="mapa" src="../imagenes/spain_provincias.jpg" />
+		<div id="resultado">
+		</div>
+	</div>
+</body>
+</html>

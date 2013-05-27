@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		
+		<style type="text/css">
+			p {
+				border: solid 1px blue;
+				width: 300px;
+				height:50px;
+				background-color: yellow;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			function basica() {
+				$("p").html("Nuevo contenido");
+				$("#p1").append(" Por detrás");
+				$("#p2").prepend("Por delante ");
+				console.info($("#p2").html());
+				$("#p2").replaceWith("<div>Capa</div>");
+				//$("#p2").html("<div>Capa</div>");
+				$("#p3").remove();
+			}
+			
+			function estilos() {
+				$("p").css("background-color","lime");
+				console.info($("#p1").css("font-weight"));
+				$("p").css(
+					{
+						color: "red",
+						fontWeight: "bold",
+						textDecoration: "underline"
+					}
+				);
+				console.info("Tamaño de p1 " + $("#p1").width() + "x" + $("#p1").height());
+				$("#p1").width(100);
+				$("#p1").height(150);
+			}
+			
+			function atributos() {
+				console.info("URL de la imagen : " + $("#imagen").attr("src"));
+				$("#imagen").attr("src", "../iconos/golf.gif");
+			}
+			
+			function campos() {
+				var argumento = parseInt($("#argumento").val());
+				var n = 1;
+				for (var i = 1; i <= argumento; i++) {
+					n *= i;
+				}
+				$("#resultado").val(n);
+			}
+		</script>
+		
+		<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+	</head>
+	<body>
+		<p id="p1">Parrafo 1</p>
+		<p id="p2">Parrafo 2</p>
+		<p id="p3">Parrafo 3</p>
+		<img src="../iconos/bicho0.gif" id="imagen" /><br/>
+		Argumento: <input type="text" id="argumento" value="0" /><br/>
+		Resultado: <input type="text" id="resultado" /><br/>
+		<button onclick="basica()">Pruebas básicas</button>
+		<button onclick="estilos()">Pruebas de estilos</button>
+		<button onclick="atributos()">Pruebas de atributos</button>
+		<button onclick="campos()">Pruebas de campos</button>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		
+		<style type="text/css">
+			#capa {
+				border: 1px solid blue;
+				height: 300px;
+				width: 200px;
+				background-color: cyan;
+			}
+		</style>
+		
+		<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+		
+		<script type="text/javascript">
+			function ratonMovido(e) {
+				var str = "";
+				str += "Posicion relativa del documento " + e.pageX + "," + e.pageY + "<br/>";
+				str += "Posicion relativa a la ventana " + e.clientX + "," + e.clientY + "<br/>";
+				str += "Posicion relativa del pantalla " + e.screenX + "," + e.screenY + "<br/>";
+				$("#capa").html(str);
+				// .type -> "click", "mouseover"
+				// .target == this (elemento)
+				// .which
+				//		teclado
+				//		raton 1(izquierdo) 0(Derecho)
+				
+			}
+		
+			function init() {
+				$("#capa").mousemove(ratonMovido);
+			}
+			
+			$(init);
+		</script>
+	</head>
+	<body>
+		<div id="capa"></div>
+	</body>
+</html>

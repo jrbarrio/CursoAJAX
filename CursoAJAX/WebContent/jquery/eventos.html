@@ -18,20 +18,6 @@
 						//this.innerHTML += " Pulsado";
 						$(this).append(" Pulsado");
 						console.dir(evento);
-						/*
-							Eventos:
-							- Raton
-								click dblclick
-								mousedown mouseup mousemove
-								mouseover mouseout
-							- Teclado
-								keydown keyup keypress
-							- Campos
-								focus blur
-								change select
-							- Elementos
-								scroll resize
-						*/
 					}		
 				);
 				$("p").mouseover(function() { 
@@ -40,6 +26,21 @@
 				$("p").mouseout(function() { 
 					$(this).css("background-color", "white");
 				});	
+				
+				/*
+					Eventos:
+					- Raton
+						click dblclick
+						mousedown mouseup mousemove
+						mouseover mouseout
+					- Teclado
+						keydown keyup keypress
+					- Campos
+						focus blur
+						change select
+					- Elementos
+						scroll resize
+				*/
 			}
 			$(init);					
 		</script>

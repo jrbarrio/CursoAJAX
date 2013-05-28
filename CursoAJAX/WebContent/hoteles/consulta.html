@@ -5,15 +5,20 @@
 		<title>Insert title here</title>
 		
 		<style type="text/css">
-			img {
+			img.hotel {
 				position: absolute;
 				z-index: 50;
 			}
 			
+			img.foto {
+				width: 50px;
+				height: 50px;
+			}
+			
 			#resultado {
 				position: absolute;
-				width: 800px;
-				height: 600px;
+				width: 778px;
+				height: 515px;
 				background-image: url(../imagenes/spain_provincias.jpg);
 			}
 			
@@ -42,6 +47,15 @@
 			    margin-top: -100px;
 			    margin-left: -300px;
 			}
+			
+			#detalle {
+				position: absolute;
+				visibility: hidden;
+				z-index: 70;
+				background-color: #AAA;
+				padding: 20px;
+				border-radius: 10px;
+			}
 		</style>
 		
 		<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
@@ -51,28 +65,23 @@
 				eval("var hoteles=" + datos);
 				$("#resultado").html("");
 				for (var i in hoteles) {
-					var str = "<img src='../iconos/hotel.gif' id='"  + hoteles[i].id + "' />";
-					$("#resultado").append(str);
-					$("#" + hoteles[i].id).css(
-						{
-							top: hoteles[i].planoY,
-							left: hoteles[i].planoX
-						}	
-					);
+					if (hoteles[i].planoY < 500) {
+						var str = "<img class='hotel' src='../iconos/hotel.gif' id='"  + hoteles[i].id + "' />";
+						$("#resultado").append(str);
+						$("#" + hoteles[i].id).css(
+							{
+								top: hoteles[i].planoY,
+								left: hoteles[i].planoX
+							}	
+						);
+						$("#" + hoteles[i].id).click(obtenerDetalle);	
+					}
 				}
 				$("#proteccion").css(
 					{
 						visibility: "hidden"
 					}		
 				);
-			}
-			
-			function peticionErronea(req, estado, msgError) {
-				console.error(msgError);	
-			}
-			
-			function peticionFinalizada() {
-				console.info("Petición finalizada");	
 			}
 		
 			function buscar() {
@@ -100,8 +109,64 @@
 				);
 			}
 			
+			function detalleRecibido(datos) {
+				eval("var detalle=" + datos);
+				
+				var str = "";
+				str += "<div>" + detalle.nombre + " (" + detalle.poblacion + ")</div>";
+				str += "<div><img class='foto' src='../fotos/" + detalle.fotos[0].foto + "' />";
+				str += "<div style='display: inline;'><h3>Individual: " + detalle.precioIndividual + "</h3>";
+				str += "<h3>Doble: " + detalle.precioDoble + "</h3></div></div>";
+				str += "<div>";
+				for (var i in detalle.caracteristicas) {
+					str += "<img src='../iconos/" + detalle.caracteristicas[i].icono + "' />";
+				}
+				str += "</div>";
+				
+				$("#detalle").html(str);
+				
+				$("#detalle").css(
+					{
+						visibility: "visible"
+					}	
+				);
+			}
+			
+			function obtenerDetalle(e) {				
+				$("#detalle").css(
+					{
+						visibility: "hidden",
+						top: e.clientY + "px",
+						left: e.clientX + "px"
+					}	
+				);
+				
+				$.ajax(
+					{
+						async: true,
+						cache: false, // JQuery inserta un valor ficticio para evitar que se utilice la cache
+						url: "../detalleHotel",
+						timeout: 5000,
+						type: "GET",
+						dataType: "text",
+						data: {
+							id: this.id
+						},
+						success: detalleRecibido
+					}	
+				);
+			}
+			
+			
 			function init() {
 				$("#boton").click(buscar);
+				$("body").click(function(){
+					$("#detalle").css(
+						{
+							visibility: "hidden"
+						}	
+					);
+				});
 			}
 			
 			$(init);
@@ -115,5 +180,6 @@
 			<label for="pmax">Precio máximo</label><input type="text" id="pmax" /><br />
 			<button id="boton">Buscar</button>
 		</div>
+		<div id="detalle"></div>
 	</body>
 </html>

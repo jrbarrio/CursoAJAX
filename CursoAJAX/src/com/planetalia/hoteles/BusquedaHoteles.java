@@ -22,7 +22,7 @@ public class BusquedaHoteles extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Pausa artificial para comprobar el icono de espera
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			
 		}

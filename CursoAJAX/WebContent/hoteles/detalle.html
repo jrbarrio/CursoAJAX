@@ -1,0 +1,73 @@
+<!DOCTYPE html >
+<html>
+<head>
+<style>
+	#detalle {
+		border-style: solid;
+		border-width: 24px 33px 39px 53px;
+		-moz-border-image: url(../imagenes/bocadillo.png) 94 61 160 105 repeat;
+		-webkit-border-image: url(../imagenes/bocadillo.png) 94 61 160 105
+			repeat;
+		-o-border-image: url(../imagenes/bocadillo.png) 94 61 160 105 repeat;
+		border-image: url(../imagenes/bocadillo.png) 94 61 160 105 fill repeat;
+		width: 400px;
+	}
+	#detalle #nombre {
+		font-weight:bold;
+		font-family:Verdana;
+		font-size:10pt;
+		color:blue;
+		text-align:center;
+	}
+	#detalle #datos {
+		font-size:10pt;
+		text-align:left;
+	}
+	#detalle #fotoPrincipal {
+		width:50px;
+	}
+	#detalle #caracteristicas {
+		width:70px;
+	}
+	#detalle table {width:100%}
+</style>
+</head>
+<body>
+	<div id='detalle'>
+			<div id='nombre'>Nombre del hotel</div>
+			<table>
+				<tr>
+					<td id='fotoPrincipal'>
+						<img src='../fotos/exterior00.jpg'	width="128" />
+					</td>
+					<td id='datos'>
+						calle la direccion 38 <br /> 
+						28001 Madrid	Madrid <br /> 
+						Precio Individual : 38 &euro; <br /> 
+						Precio Doble : 38 &euro; <br />
+					</td>
+					<td id='caracteristicas'>
+						<img
+						src='../iconos/caja_fuerte.gif' alt='Caja Fuerte'
+						title='Caja Fuerte'
+						width='16' 
+						/> 
+						<img
+						src='../iconos/caja_fuerte.gif' alt='Caja Fuerte'
+						title='Caja Fuerte'
+						width='16' 
+						/> 
+					</td>
+				</tr>
+				<tr>
+					<td colspan='3' id='fotos'>
+						<img src='../fotos/exterior00.jpg' width="32" /> 
+						<img src='../fotos/exterior00.jpg' width="32" />
+						<img src='../fotos/exterior00.jpg' width="32" />
+					</td>
+				</tr>
+			</table>
+	</div>
+
+</body>
+</html>

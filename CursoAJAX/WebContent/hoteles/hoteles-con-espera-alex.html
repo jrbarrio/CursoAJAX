@@ -1,0 +1,91 @@
+<!DOCTYPE html >
+<html>
+<head>
+	<style>
+		#contenedor {position:relative;top:0px;left:0px}
+		#mapa {position:absolute;top:0px;left:0px}
+		#capaModal {
+			position:fixed;z-index:15;top:0px;left:0px;width:100%;height:100%;
+			background-image:url(../imagenes/barras.jpg);
+			opacity:0.3;
+			filter:alpha(opacity=30);
+			display:none;
+		}
+		#pausa {
+			position:fixed;
+			z-index:25;
+			top:50%;
+			left:50%;
+			display:none;
+		} 
+		
+	</style>
+	<script src="jquery-1.6.2.min.js"></script>
+	<script>
+		function datosRecibidos(datos) {
+			eval("var hoteles="+datos);
+			var str="";
+			for (var i in hoteles) {
+				var x = hoteles[i].planoX;
+				var y = hoteles[i].planoY;
+				var estilo = "position:absolute;top:"+y+"px;left:"+x+"px";
+				var id = "h_"+hoteles[i].id;
+				str += "<img src='../iconos/hotel.gif' "+
+								" id='" + id+"' "+
+								" style='"+estilo+"' />";
+			}
+			$("#resultado").html(str);
+		} 
+		function buscar() {
+			var pmin = $("#pmin").val();
+			var pmax = $("#pmax").val();
+			mostrarSpinner();
+			$.ajax(
+					{
+						cache:false,
+						url:"../busquedaHoteles",
+						timeout:5000,	/* en ms */
+						dataType:"text", /* xml, json */
+						data:{
+							pmin:pmin,
+							pmax:pmax
+						},
+						success:datosRecibidos,
+						complete:peticionCompleta
+					}
+			);
+		}
+		
+		function mostrarSpinner() {
+			$("#pausa").css("display","block");
+			$("#capaModal").css("display","block");
+		}
+		
+		function peticionCompleta() {
+			$("#pausa").css("display","none");
+			$("#capaModal").css("display","none");
+		}
+		
+		function init() {
+			$("#buscar").click(buscar);
+		}
+		$(init);
+	</script>
+</head>
+<body>
+	Precio Mínimo: 
+		<input type="text" placeholder="(Precio mínimo)"
+			 id="pmin" /><br/>
+	Precio Máximo: 
+		<input type="text" placeholder="(Precio máximo)"
+			 id="pmax" /><br/>
+	<button id='buscar'><img src='../iconos/lupa.gif' />Buscar</button>
+	<div id="contenedor">
+		<img id="mapa" src="../imagenes/spain_provincias.jpg" />
+		<div id="resultado">
+		</div>
+	</div>
+	<div id="capaModal"></div>
+	<img id="pausa" src="../iconos/wait.gif" />
+</body>
+</html>

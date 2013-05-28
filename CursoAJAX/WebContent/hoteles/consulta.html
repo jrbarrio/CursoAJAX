@@ -7,7 +7,7 @@
 		<style type="text/css">
 			img {
 				position: absolute;
-				z-index: 100;
+				z-index: 50;
 			}
 			
 			#resultado {
@@ -21,6 +21,27 @@
 				position: absolute;
 				top: 620px;
 			}
+			
+			#proteccion {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 100%;
+				visibility: hidden;
+				z-index: 100;
+				background-color: #FFFFFF;
+				opacity: 0.5;
+				filter:alpha(opacity=50);
+			}
+			
+			.centrada {
+				position:relative;
+			    top:50%;
+			    left: 50%;
+			    margin-top: -100px;
+			    margin-left: -300px;
+			}
 		</style>
 		
 		<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
@@ -28,8 +49,9 @@
 		<script type="text/javascript">
 			function hotelesRecibidos(datos) {
 				eval("var hoteles=" + datos);
+				$("#resultado").html("");
 				for (var i in hoteles) {
-					var str = "<img src='../iconos/bicho0.gif' id='"  + hoteles[i].id + "' />";
+					var str = "<img src='../iconos/hotel.gif' id='"  + hoteles[i].id + "' />";
 					$("#resultado").append(str);
 					$("#" + hoteles[i].id).css(
 						{
@@ -38,6 +60,11 @@
 						}	
 					);
 				}
+				$("#proteccion").css(
+					{
+						visibility: "hidden"
+					}		
+				);
 			}
 			
 			function peticionErronea(req, estado, msgError) {
@@ -51,6 +78,11 @@
 			function buscar() {
 				var pmin = $("#pmin").val();
 				var pmax = $("#pmax").val();
+				$("#proteccion").css(
+					{
+						visibility: "visible"
+					}		
+				);
 				$.ajax(
 					{
 						async: true,
@@ -76,6 +108,7 @@
 		</script>
 	</head>
 	<body>
+		<div id="proteccion"><img class="centrada" src="../iconos/wait.gif"> </div>
 		<div id="resultado"> </div><br />
 		<div id="formulario">
 			<label for="pmin">Precio mínimo</label><input type="text" id="pmin" /><br />

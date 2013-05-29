@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link type="text/css" rel="stylesheet"
+			href="css/ui-lightness/jquery-ui-1.8.16.custom.css" />
+		<script src="jquery-1.6.2.min.js"></script>
+		<script src="jquery-ui-1.8.16.custom.min.js"></script>
+		<script>
+			function init() {
+				$("#capa").tabs();
+				$("#capa").tabs('remove', 1);
+				$("#capa").tabs('add', '../js/pajaros.html', 'Google', 1);
+				/*
+				Métodos:	
+					enable
+					enable n
+					disable
+					disable n
+					select n
+					length nº de pestañas
+					remove n
+					add url titulo [indice]		
+				
+				Eventos:
+					load
+					add
+					remove
+					enable
+					disable
+					show
+				*/
+			}
+			$(init);
+		</script>
+	</head>
+	<body>
+		<div id='capa'>
+			<ul>
+				<li><a href="#uno">Título Uno</a></li>
+				<li><a href="#dos">Título Dos</a></li>
+				<li><a href="#tres">Título Tres</a></li>
+			</ul>
+			<div id='uno'>Contenido de la pestaña 1</div>
+			<div id='dos'>Contenido de la pestaña 2</div>
+			<div id='tres'>Contenido de la pestaña 3</div>
+		</div>
+	</body>
+</html>

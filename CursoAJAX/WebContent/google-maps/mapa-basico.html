@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Planetalia - Ejemplo de Google Maps</title>
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA-_BS9zDWB0ekb0XG4a5-FRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRvpY7PYxb3BWb47dqe3qXG73WnjA" type="text/javascript"></script>
+    <script>
+
+    function load() {
+    	if (GBrowserIsCompatible()) {
+        	map = new GMap2(document.getElementById("mapa"));
+       		map.setCenter(new GLatLng(60, 0), 4);
+	  		map.setMapType(G_NORMAL_MAP);
+	  		// G_NORMAL_MAP
+	  		// G_SATELLITE_MAP
+	  		// G_HYBRID_MAP
+	  		// G_PHYSICAL_MAP
+	  		// G_MOON_VISIBLE_MAP
+	  		// G_MARS_VISIBLE_MAP
+	  		// G_SKY_VISIBLE_MAP
+	  		
+	  		// var punto = new GLatLng(lat, lng);
+	  		// punto.lat() -90 a 90
+	  		// punto.lng() -180 a 180
+	  		// punto1.distanceFrom(punto2[,radio])
+		}
+    }
+
+    function desplazar() {
+    	map.panTo(new GLatLng(60, 10));	
+    }
+    </script>
+  </head>
+  <body onload="load()" onunload="GUnload()">
+	<h1>Planetalia - Ejemplo de Google Maps </h1>
+    <div id="mapa" style="width:500px; height:400px"></div>
+    <button onclick="desplazar()">Desplazar</button>
+  </body>
+</html>

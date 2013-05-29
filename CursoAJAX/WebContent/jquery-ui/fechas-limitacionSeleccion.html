@@ -1,0 +1,52 @@
+<!DOCTYPE HTML >
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Curso AJAX de Planetalia. Plantilla para JQuery</title>
+		<script src="jquery-1.6.2.min.js"></script>
+		<script src="jquery-ui-1.8.16.custom.min.js"></script>
+		<link rel="stylesheet" type="text/css"	 href="css/ui-lightness/jquery-ui-1.8.16.custom.css" />
+		 <style>
+		 #ui-datepicker-div td {
+		 		background:none;
+		 }
+		 #ui-datepicker-div td.foo a {
+		 		background-color:rgb(200,200,200);
+		 		background-image:url(../iconos/cancelar_peq.gif);
+		 		background-repeat:no-repeat;
+		 		background-position:top left;
+			}
+		
+		 </style>
+		 <script>
+		  function init() {
+		    $("#camp").datepicker({
+  		    maxDate: new Date(2008,11,15),
+		      minDate: new Date(2008,0,1),
+		      numberOfMonths:2,
+		      firstDay:1
+		    });
+		    $("#camp").datepicker('option','beforeShowDay',verificacionFecha);
+		    $("#camp").datepicker('option','onSelect',fechaSeleccionada);
+		  }
+		  
+		  function fechaSeleccionada(texto) {
+		    alert(texto);
+		  }
+		  
+		  function verificacionFecha(fecha) {
+		    if (fecha.getDay()==0 || fecha.getDay() == 6) {
+		      var res = [false,'','Es fin de semana!!!']
+		    } else {
+		      var res = [true,fecha.getDate()==15?'foo':'',''];
+		    }
+		    return res;
+		  }
+		 </script>
+		 
+	</head>
+	<body onload='init()'>
+	<input type='text' id='camp' /> 
+    
+	</body>
+</html>

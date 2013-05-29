@@ -1,0 +1,62 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link type="text/css" rel="stylesheet"
+	href="css/ui-lightness/jquery-ui-1.8.16.custom.css" />
+<script src="jquery-1.6.2.min.js"></script>
+<script src="jquery-ui-1.8.16.custom.min.js"></script>
+<script>
+	function init() {
+		$("#fecha").datepicker();
+		$("#fecha").datepicker('option', 'dayNames', ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado']);
+		$("#fecha").datepicker('option', 'dayNamesShort', ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']);
+		$("#fecha").datepicker('option', 'dayNamesMin', ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']);
+		$("#fecha").datepicker('option', 'firstDay', 1);
+		$("#fecha").datepicker('option', 'monthNames', ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']);
+		$("#fecha").datepicker('option', 'monthNamesShort', ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']);
+		/*
+		Opciones:
+			dayNames: ['Domingo',...]
+			dayNamesShort: ['Dom',...]
+			dayNamesMin: ['Do',...]
+			firstDay: 1 (Lunes)
+			monthNames: ['Enero',...]
+			monthNamesShort: ['Ene',...]
+			defaultDate: <fecha>
+			minDate: <fecha>
+			maxDate: <fecha>
+			dateFormat: 'yy-MM-dd'
+				mm - numero de mes
+				dd - dia
+				MM - nombre de mes
+				yy - año
+			numberOfMonths
+			
+			Metodos:
+				getDate
+				setDate
+				hide
+				show
+				enable
+				disable
+				
+			Eventos:
+				beforeShowDay
+					function(Date) -> resultado[3]
+						[0] -> seleccionable
+						[1] -> css
+						[2] -> tooltip
+						
+				onSelect
+					function(date, componente)
+		*/
+		
+	}
+	$(init);
+</script>
+</head>
+<body>
+	Fecha: <input type="text" id="fecha" />
+</body>
+</html>

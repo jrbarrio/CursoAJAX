@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Curso AJAX de Planetalia. Plantilla para JQuery</title>
+		<script src="jquery-1.6.2.min.js"></script>
+		<script src="jquery-ui-1.8.16.custom.min.js"></script>
+		<link rel="stylesheet" type="text/css"	 href="css/ui-lightness/jquery-ui-1.8.16.custom.css" />
+		 <style>
+		  #panelMuestra { float:left;width:200px; height:8.5em; border:solid 1px black; float:left;margin-left:40px;background-color:#000}
+		  #selector { width:450px;border:solid 1px black; padding:25px; float:left }
+		  #selector div  { border:solid 1px black; }
+		  .fila { display:table-row; width:400px; }
+		  .celdaEtiqueta { display:table-cell; width:50px;padding:5px 5px 0px 5px}
+		  .celdaBarra { display:table-cell; width:400px; padding:5px 5px 0px 15px}
+		 </style>
+		 <script>
+		  function init() {
+		    $("#rojo").slider({min:0,max:255,value:0,step:1});
+		    $("#verde").slider({min:0,max:255,value:0,step:1});
+		    $("#azul").slider({min:0,max:255,value:0,step:1});
+		    
+		     $("#rojo").slider("option","slide",cambiado);
+		     $("#verde").slider("option","slide",cambiado);
+		     $("#azul").slider("option","slide",cambiado);
+		  }
+		  
+		  function cambiado() {
+		    var r = $("#rojo").slider("option","value");
+		    var g = $("#verde").slider("option","value");
+		    var b = $("#azul").slider("option","value");
+		    $("#panelMuestra").css("backgroundColor","rgb("+r+","+g+","+b+")");
+		    $("#lblRojo").html(r);
+		    $("#lblVerde").html(g);
+		    $("#lblAzul").html(b);
+		  }
+		 </script>
+		 
+	</head>
+	<body onload='init()'>
+	  
+	
+	  <div id="selector">
+	  		<div class='fila'>
+	  			<div class='celdaEtiqueta' id='lblRojo'>
+	  				0
+	  			</div>
+	  			<div class='celdaBarra'>
+		    	  <div id='rojo' style='background-image:none; background-color:Red;' >
+		    	    <div class="ui-slider-handle"></div>
+		    	  </div>
+		    	</div>
+		   </div>
+		   <div class='fila'>
+	  			<div class='celdaEtiqueta' id='lblVerde'>
+	  				0
+	  			</div>
+	  			<div class='celdaBarra'>
+    	  		<div id='verde' style='background-image:none; background-color:Lime'>
+    	    		<div class="ui-slider-handle"></div>
+    	  		</div>
+    	  	</div>
+    	 </div>
+    	 <div class='fila'>
+	  			<div class='celdaEtiqueta' id='lblAzul'>
+	  				0
+	  			</div>
+	  			<div class='celdaBarra'>
+		    	  <div id='azul' style='background-image:none; background-color:Blue'>
+		    	    <div class="ui-slider-handle"></div>
+		    	  </div>
+		    	</div>
+		   </div>
+	  </div>
+	  <div id="panelMuestra">
+	  </div>
+	
+	  <br/>
+	  <br/>
+    
+	</body>
+</html>

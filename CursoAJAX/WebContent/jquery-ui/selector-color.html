@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		
+		<link type="text/css" rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.16.custom.css">	
+		
+		<style type="text/css">
+			div {
+				margin: 10px;
+			}
+			
+			#color {
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				border: 1px solid black;
+			}
+		</style>
+	
+		<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="jquery-ui-1.8.16.custom.min.js"></script>
+	
+		<script type="text/javascript">
+			function mostrarValor() {
+				var rojo = $("#rojo").slider('option', 'value');
+				rojo = parseInt(255 * parseInt(rojo) / 100);
+				$("#valor-rojo").val(rojo);
+				
+				var verde = $("#verde").slider('option', 'value');
+				verde = parseInt(255 * parseInt(verde) / 100);
+				$("#valor-verde").val(verde);
+				
+				var azul = $("#azul").slider('option', 'value');
+				azul = parseInt(255 * parseInt(azul) / 100);
+				$("#valor-azul").val(azul);
+				
+				alert("rgb(" + rojo + ", " + verde + ", " + azul +")");
+				
+				$("#color").css(
+					{
+						backgroundColor: "rgb(" + rojo + ", " + verde + ", " + azul +")"			
+					}
+				);
+			}
+		
+			function init() {
+				$("#rojo").slider();
+				$("#rojo").slider('option', 'change', mostrarValor);
+				
+				$("#verde").slider();
+				$("#verde").slider('option', 'change', mostrarValor);
+				
+				$("#azul").slider();
+				$("#azul").slider('option', 'change', mostrarValor);
+			}
+			$(init);
+		</script>
+	</head>
+	<body>
+		<div id="rojo">
+			<div class="ui-slider-handle"></div>
+		</div>
+		<input type="text" id="valor-rojo" value="0" /> 
+		<div id="verde">
+			<div class="ui-slider-handle"></div>
+		</div>
+		<input type="text" id="valor-verde" value="0" /> 
+		<div id="azul">
+			<div class="ui-slider-handle"></div>
+		</div>
+		<input type="text" id="valor-azul" value="0" /> 
+		<div id="color"></div>
+	</body>
+</html>

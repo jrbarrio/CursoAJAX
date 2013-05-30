@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding='iso-8859-1'?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:s="http://www.w3.org/2000/svg" 
+  xmlns:xlink = "http://www.w3.org/1999/xlink/"
+>
+  <body >
+  <h3>Trazos SVG</h3>
+  
+  <s:svg width="600" height="600"  id='svg'>
+    <s:g id="rotacion" transform="rotate(45,150,200)">
+      <s:ellipse fill="red" stroke="blue" stroke-width="10"   cx="150" cy="200" rx="50" ry="100" />
+    </s:g>
+  </s:svg>
+  
+  <script>
+	a = 45;
+	function rotar() {
+		a = (a+10)%360;
+		var el = document.getElementById("rotacion");
+		el.setAttribute("transform","rotate("+a+",150,200)");
+		setTimeout("rotar()",30);
+	}
+	setTimeout("rotar()",30);
+  </script>
+  
+  </body>
+</html>

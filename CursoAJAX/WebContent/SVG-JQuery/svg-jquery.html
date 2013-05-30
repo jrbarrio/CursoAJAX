@@ -1,0 +1,32 @@
+<html>
+  
+
+  <script src="jquery-1.4.2.js">  </script>
+  <script type="text/javascript" src="jquery.svg.min.js"></script>
+  <script type="text/javascript" src="jquery.svganim.min.js"></script>
+  <body onload="init()">
+  <h3>Trazos SVG</h3>
+  <button id='animar' >Animar</button>
+  
+  <div id="capa" style="width:500px;height:500px">
+  </div>
+  
+  
+  <script>
+    function init() {
+      $("#capa").svg({onLoad:pintar});
+      $("#animar").click(svgAnimar);
+    }
+    
+    function pintar(svg) {
+      var circulo = svg.circle(100,100,100,{fill:'red',stroke:'blue',strokeWidth:3,id:'test'});
+    }
+    
+    
+    function svgAnimar() {
+      $("#test").animate( {svgCx:150,svgCy:150,svgR:50},3000);
+    }
+    
+  </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:s="http://www.w3.org/2000/svg" 
+>
+  
+  <body>
+  <h3>Elipse SVG</h3>
+
+  <s:svg width="400px" height="400px" style='border:solid blue 1px'>
+    <s:defs>
+    	<s:linearGradient
+    		id="degradado1"
+    		x1="0" y1="0"
+    		x2="100" y2="100"
+    		gradientUnits="userSpaceOnUse"
+    		spreadMethod="reflect"> 
+    		<!-- pad | reflect | repeat -->
+    		<s:stop offset="0%" stop-color="cyan" />
+    		<s:stop offset="100%" stop-color="green" />
+    	</s:linearGradient>
+    	<s:radialGradient
+    		id="degradado2"
+    		fx="50" fy="50"
+    		cx="50" cy="50"
+    		r="100"
+    		gradientUnits="userSpaceOnUse"
+    		spreadMethod="reflect"> 
+    		<!-- pad | reflect | repeat -->
+    		<s:stop offset="0%" stop-color="cyan" />
+    		<s:stop offset="100%" stop-color="green" />
+    	</s:radialGradient>
+    </s:defs>
+    
+    <s:ellipse cx="50" cy="50" rx="100" ry="100" fill="url(#degradado2)"/>
+    
+    <!-- 
+    	ellipse cx cy rx ry
+    	circle cx cy r
+    	rect x y width height rx ry
+    	line x1 y1 x2 y2
+    	
+    	<s:line x1="100" y1="100" x2="200" y2="200" stroke-width="10" stroke="red"/>
+    	
+    	polyline points='x1,y1,x2,y2,x3,y3...'
+    	polygone points='x1,y1,x2,y2,x3,y3...'
+     
+     	Rellenos:
+     		fill = "color|none"
+     		fill-opacity = 0,0 - 1.0
+     		
+     	Trazos:
+     		stroke = "cualquier cosa que pueda valer fill"
+     		stroke-width
+     		stroke-opacity
+     -->
+     <s:g transform="translate(10,10) scale(1.5,1.5) rotate(-45) ">
+	     <s:text x="50" y="200" fill="red" fill-opacity="0.8">
+	     	Hola mundo SVG
+	     </s:text>
+	 </s:g>
+  </s:svg>
+  
+  </body>
+</html>

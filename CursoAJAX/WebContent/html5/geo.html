@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		
+		<script type="text/javascript">
+			function posicion() {
+				var geo = navigator.geolocation;
+				if (geo) {
+					geo.getCurrentPosition(posicionObtenida, errorPosicion);
+					// geo.watchPosition(posicionObtenida, errorPosicion) Informa periodicamente de la posicion
+					// geo.clearWatch();
+				}
+			}
+			
+			function posicionObtenida(info) {
+				console.info("instante = " + info.timestamp);
+				console.info("longitud = " + info.coords.longitude);
+				console.info("latitud = " + info.coords.latitude);
+				console.info("altitud = " + info.altitude);
+				console.info("precisión lat,lang en metros = " + info.coords.accuracy);
+				console.info("precisión altura en metros = " + info.coords.altitudeAccuracy);
+				console.info("rumbo verdadero = " + info.coords.heading);
+				console.info("velocidad (m/s) = " + info.coords.speed);
+			}
+			
+			function errorPosicion(codError, msgError) {
+				console.error("Error = " + msgError);
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="posicion()">¿Dónde estoy?</button>
+	</body>
+</html>

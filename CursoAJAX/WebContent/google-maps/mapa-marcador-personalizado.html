@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Curso AJAX de Planetalia</title>
+	</head>
+	<body id='bodi'>
+		<div id="map" style="width:500px; height:500px"></div>
+ 
+	  <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA-_BS9zDWB0ekb0XG4a5-FRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRvpY7PYxb3BWb47dqe3qXG73WnjA" type="text/javascript"></script>
+		<script language="JavaScript1.2" type="text/javascript">
+       	var map = new GMap2(document.getElementById("map"));
+       	map.setCenter(new GLatLng(40.427367, -3.655610), 17);
+	  		map.setMapType(G_NORMAL_MAP);
+				
+				var marcadorHotel = new GIcon();
+				marcadorHotel.image = "hotel.gif";
+				marcadorHotel.shadow = "hotel_sombra.png";
+				marcadorHotel.transparent = "hotel_transparente.png";
+				marcadorHotel.imageMap = [8,16,29,5,40,14,39,28,23,35,8,32];
+				marcadorHotel.iconSize = new GSize(55,41);
+				marcadorHotel.shadowSize = new GSize(55,41);
+				marcadorHotel.iconAnchor = new GPoint(24, 20);
+				marcadorHotel.infoWindowAnchor = new GPoint(24, 20);
+				
+				var marcador= new GMarker(map.getCenter(), { draggable:false,icon: marcadorHotel } );
+				map.addOverlay(marcador);
+				marcador.openInfoWindow("Planetalia S.L.<br/> c/Tórtola 10, 28019 Madrid <br/> Tel 916989073");
+		</script>
+	</body>
+</html>

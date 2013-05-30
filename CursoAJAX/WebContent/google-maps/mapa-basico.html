@@ -85,9 +85,20 @@
     		// Ventana informativa
     		// map.openInfoWindow(punto, "<h1>Aquí estuve yo</h1>");
     	
+    		// Icono definido por el usuario para el marcador
+    		var icono = new GIcon();
+    		icono.image = "hotel_marcador.png";
+    		icono.shadow = "hotel_sombra.png";
+    		icono.transparent = "hotel_transparente.png";
+    		icono.imageMap = [8,16,29,5,40,14,39,28,23,35,8,32];
+    		icono.iconSize = new GSize(55,41);
+    		icono.shadowSize = new GSize(55,41);
+    		icono.iconAnchor = new GPoint(24,20);
+    		
     		var marcador = new GMarker(punto, 
     				{
-    					draggable: true	
+    					draggable: true,
+    					icon: icono
     				}
     		);
     		map.addOverlay(marcador);
@@ -101,6 +112,41 @@
     function marcadorArrastrado(punto) {
     	alert("Latitud: " + punto.lat() + " - Longitud: " + punto.lng());
     }
+    
+    function agregarLinea() {
+    	map.panTo(new GLatLng(0, 0));	
+    	// GPolyline([puntos], color, grosor, opacidad)
+    	var polilinea = new GPolyline(
+    			[
+    				new GLatLng(-0.5, 0.3),
+    				new GLatLng(0.5, 0.4),
+    				new GLatLng(-1.0, 0.9)
+    			], 
+    			"red", 3, 0.8);
+    	map.addOverlay(polilinea);
+    	// polilinea.deleteVertex(n)
+    	// polilinea.insertVertex(n, punto)
+    	// polilinea.getVertexCount()
+    	// polilinea.getVertex(n) -> punto
+    	// polilinea.hide()
+    	// polilinea.show()
+    	// polilinea.getLength() -> longitud en metros
+    }
+    
+    function agregarPoligono() {
+    	map.panTo(new GLatLng(0, 0));	
+    	var poligono = new GPolygon(
+    			[
+    				new GLatLng(-0.5, 0.3),
+    				new GLatLng(0.5, 0.4),
+    				new GLatLng(-1.0, 0.9),
+    				new GLatLng(-0.5, 0.3)
+    			], 
+    			"red", 3, 0.8, "blue", 0.5);
+    	map.addOverlay(poligono);
+    	
+    	// poligono.getArea() -> m2
+    }
     </script>
   </head>
   <body onload="load()" onunload="GUnload()">
@@ -109,7 +155,9 @@
     <button onclick="desplazar()">Desplazar</button>
     <br />
     Direccion: <input type="text" id="dir" /><br />
-    <button onclick="buscar()">Buscar</button>
+    <button onclick="buscar()">Buscar</button><br />
+    <button onclick="agregarLinea()">Agregar Linea</button>
+    <button onclick="agregarPoligono()">Agregar Poligono</button>
     
   </body>
 </html>

@@ -23,11 +23,83 @@
 	  		// punto.lat() -90 a 90
 	  		// punto.lng() -180 a 180
 	  		// punto1.distanceFrom(punto2[,radio])
-		}
+	  		
+	  		map.addControl(new GOverviewMapControl());
+	  		map.addControl(new GLargeMapControl());
+	  		map.addControl(new GMapTypeControl());
+	  		map.addControl(new GScaleControl());
+	  		// GSmallMapControl(
+	  		// GLargeMapControl
+	  		// GSmallZoomControl
+	  		// GScaleControl
+	  		// GMapTypeControl
+	  		// GOverviewMapControl
+		
+    		map.enableScrollWheelZoom();
+	  		
+	  		// Los eventos en Google Maps se controlan de forma centralizada
+	  		/* GEvent.addListener(objeto, "nombre-evento", funcion);
+    		   GEvent.removeListener()	
+    		   
+    		   Eventos del mapa:
+    			eventos estándar de javascript
+    			dragstart drag dragend
+    			movestart move moveend
+    			infowindowopen infowindowclose
+    			
+    		   Eventos de los marcadores:
+    			eventos estándar de javascript
+    			dragstart drag dragend
+    				function(punto) {...}
+	  		*/
+	  		
+    		GEvent.addListener(map, "click", mapaPulsado);
+    	}
+    }
+    
+    function mapaPulsado(overlay, overlaylatlng) {
+    	var marcador = new GMarker(overlaylatlng, 
+				{
+					draggable: true	
+				}
+		);
+    	map.addOverlay(marcador);
     }
 
     function desplazar() {
     	map.panTo(new GLatLng(60, 10));	
+    	// map.enableDragging();
+    	// map.disableDragging();
+    }
+    
+    function buscar() {
+    	var valor = document.getElementById("dir").value;
+    	var cc = new GClientGeocoder();
+    	cc.getLatLng(valor, listo);
+    }    
+    
+    function listo(punto) {
+    	if (punto != null) {
+    		map.setCenter(punto, 17);
+    		
+    		// Ventana informativa
+    		// map.openInfoWindow(punto, "<h1>Aquí estuve yo</h1>");
+    	
+    		var marcador = new GMarker(punto, 
+    				{
+    					draggable: true	
+    				}
+    		);
+    		map.addOverlay(marcador);
+    		// map.removeOverlay(marcador);
+    		// map.clearOverlays();
+    		
+    		GEvent.addListener(marcador, "dragend", marcadorArrastrado);
+    	}
+	}
+    
+    function marcadorArrastrado(punto) {
+    	alert("Latitud: " + punto.lat() + " - Longitud: " + punto.lng());
     }
     </script>
   </head>
@@ -35,5 +107,9 @@
 	<h1>Planetalia - Ejemplo de Google Maps </h1>
     <div id="mapa" style="width:500px; height:400px"></div>
     <button onclick="desplazar()">Desplazar</button>
+    <br />
+    Direccion: <input type="text" id="dir" /><br />
+    <button onclick="buscar()">Buscar</button>
+    
   </body>
 </html>

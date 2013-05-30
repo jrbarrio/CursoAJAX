@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Insert title here</title>
+		
+		<script type="text/javascript">
+			function cambio(e) {
+				var r = document.getElementById("audio");
+				var capa = document.getElementById("posicion");
+				capa.innerHTML = r.currentTime + " de " + r.duration + " seg.";
+			}
+		</script>
+	</head>
+	<body>
+		<span id="posicion"></span><br />
+		<audio id="audio" controls="controls" ontimeupdate="cambio()">
+			<source src="../audio/Vivaldi.ogg"></source>
+		</audio>
+		<!-- 
+			.controls = true/false
+			.duration = seg
+			.currenTime = seg
+			.paused = true/false
+			.loop = true/false
+			.volume = 0.0 a 1.0
+			
+			Eventos:
+				ontimeupdate - cambio en la posicion actual
+				durationchange
+				volumechange
+				ended
+			
+			Métodos:
+				play
+				pause			
+		 -->
+		 <video id="video" controls="controls">
+			<source src="../video/transformers480.ogg"></source>
+		</video>
+	</body>
+</html>
